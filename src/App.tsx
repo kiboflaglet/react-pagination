@@ -1,6 +1,7 @@
 import './App.css'
 import UserDummyAPI from './components/UserDummyJson/User.DummyAPI'
 import UserLocalData from './components/UserLocalData/User.LocalData'
+import UserTanStackTable from './components/UserTanStackTable/UserTanStackTable'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <UserLocalData />
       <UserDummyAPI />
+      <UserTanStackTable />
     </>
   )
 }
