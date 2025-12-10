@@ -2,7 +2,7 @@ import { flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } fro
 import { userColumns } from './user.columns'
 import users from './users.data.json'
 
-const UserTanStackTable = () => {
+const UserTanStackTableClient = () => {
 
 
     const table = useReactTable({
@@ -61,4 +61,4 @@ const UserTanStackTable = () => {
     )
 }
 
-export default UserTanStackTable
+export default UserTanStackTableClient
