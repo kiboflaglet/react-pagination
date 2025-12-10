@@ -1,38 +1,44 @@
 import React from 'react'
-import users from "./users.data.json"
 import type { User } from './User.type'
+import { useUserPagination } from './useUserPagination';
 
-const UserList = () => {
+const UserDummyAPI = () => {
 
     const pageSize = 5;
     const [page, setPage] = React.useState(1)
-    const start = (page - 1) * pageSize
-    const end = start + pageSize
 
-    const paginatedUsers = users.slice(start, end)
-    const totalPages = Math.ceil(users.length / pageSize)
+    const { data, loading, total } = useUserPagination(page, pageSize)
+
 
     const movePage = (increase: boolean) => {
         increase ? setPage(page => page + 1) : setPage(page => page - 1)
     }
 
+
+    const totalPages = Math.ceil(total / pageSize);
+
     return (
         <div>
 
-            <h2>Users List</h2>
+            <h2>Users Dummy API</h2>
 
-            <ul>
-                {paginatedUsers.map((item: User) => (
-                    <li key={item.id}>{item.name}</li>
-                ))}
-            </ul>
+            {loading ? (
+                <h3>Users loading</h3>
+            ) : (
+                <ul>
+                    {data.map((item: User) => (
+                        <li key={item.id}>{item.firstName} {item.lastName}</li>
+                    ))}
+                </ul>
+            )}
+
 
             <div style={{
                 display: 'flex',
                 gap: "10px",
                 alignItems: "center"
             }}>
-                <button disabled={page <= 1}  onClick={() => { movePage(false) }}>Prev</button>
+                <button disabled={page <= 1} onClick={() => { movePage(false) }}>Prev</button>
                 <span>Curr: {page}, Page size: {pageSize}, Total pages: {totalPages}</span>
                 <button disabled={page >= totalPages} onClick={() => { movePage(true) }}>Next</button>
             </div>
@@ -41,4 +47,4 @@ const UserList = () => {
     )
 }
 
-export default UserList
+export default UserDummyAPI

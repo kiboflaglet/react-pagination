@@ -1,12 +1,13 @@
-import { useState } from 'react'
 import './App.css'
-import UserList from './components/UserLocalData/UserList'
+import UserDummyAPI from './components/UserDummyJson/User.DummyAPI'
+import UserLocalData from './components/UserLocalData/User.LocalData'
 
 function App() {
 
   return (
     <>
-      <UserList />
+      <UserLocalData />
+      <UserDummyAPI />
     </>
   )
 }
